@@ -4,10 +4,10 @@
 Gradient descent (and especially its stochastic variants) is the foundational iterative optimization tool for training deep neural networks, ranging from basic feed-forward networks to complex architectures like CNNs, RNNs/LSTMs, Transformers, and Variational Autoencoders. At its core, gradient descent iteratively updates model parameters in the direction opposite to the loss function’s gradient. This simplicity and flexibility make it the universal engine behind deep learning breakthroughs.
 
 **Mathematical and Applied Perspective:**  
-For a loss function \( L(\theta) \) parameterized by \(\theta\), a basic step is:
-\[
+For a loss function $\( L(\theta) \)$ parameterized by $\(\theta\)$, a basic step is:
+$$\[
 \theta^{(t+1)} = \theta^{(t)} - \alpha \nabla_{\theta} L(\theta^{(t)}),
-\]
+\]$$
 where \(\alpha\) is the learning rate. In deep learning contexts, \(\nabla_{\theta} L\) is computed via backpropagation. While vanilla SGD is foundational, ongoing research explores adaptive methods like Adam, AdaGrad, and RMSProp, or even more sophisticated second-order approximations. These iterative refinements help cope with high-dimensional, non-convex optimization landscapes.
 
 **Connections to Models:**  
