@@ -1,3 +1,5 @@
+
+
 ### 1. Gradient Descent and Its Variants for Deep Neural Architectures
 
 **Core Idea:**  
@@ -5,10 +7,12 @@ Gradient descent (and especially its stochastic variants) is the foundational it
 
 **Mathematical and Applied Perspective:**  
 For a loss function $\( L(\theta) \)$ parameterized by $\(\theta\)$, a basic step is:
+
 $$\[
 \theta^{(t+1)} = \theta^{(t)} - \alpha \nabla_{\theta} L(\theta^{(t)}),
 \]$$
-where \(\alpha\) is the learning rate. In deep learning contexts, \(\nabla_{\theta} L\) is computed via backpropagation. While vanilla SGD is foundational, ongoing research explores adaptive methods like Adam, AdaGrad, and RMSProp, or even more sophisticated second-order approximations. These iterative refinements help cope with high-dimensional, non-convex optimization landscapes.
+
+where $\(\alpha\)$ is the learning rate. In deep learning contexts, $\(\nabla_{\theta} L\)$ is computed via backpropagation. While vanilla SGD is foundational, ongoing research explores adaptive methods like Adam, AdaGrad, and RMSProp, or even more sophisticated second-order approximations. These iterative refinements help cope with high-dimensional, non-convex optimization landscapes.
 
 **Connections to Models:**  
 - **Deep Learning (Vanilla Networks, CNNs, RNNs, Transformers, Autoencoders):** All rely on gradient-based iterative methods for parameter updates. For example, Transformer architectures—central to modern NLP and vision tasks—are trained by iteratively adjusting billions of parameters using gradients derived from massive datasets.  
@@ -24,10 +28,12 @@ where \(\alpha\) is the learning rate. In deep learning contexts, \(\nabla_{\the
 Coordinate descent updates model parameters one (or a group) at a time, simplifying complex optimization into a series of manageable subproblems. It is a proven workhorse for dealing with L1 (Lasso) and mixed L1/L2 (Elastic Net) penalized regression, producing sparse solutions that facilitate interpretability and feature selection.
 
 **Mathematical and Applied Perspective:**  
-At each iteration, coordinate descent focuses on updating one parameter \(\theta_j\) by minimizing the loss with respect to \(\theta_j\) alone, holding others fixed. Under convexity, this yields a monotone decrease in the objective and leads to global optima. For Lasso:
-\[
+At each iteration, coordinate descent focuses on updating one parameter $\(\theta_j\)$ by minimizing the loss with respect to $\(\theta_j\)$ alone, holding others fixed. Under convexity, this yields a monotone decrease in the objective and leads to global optima. For Lasso:
+
+$$\[
 \min_{\boldsymbol{\beta}}\; \frac{1}{2n}\sum_{i=1}^{n}(y_i - \mathbf{x}_i^\top \boldsymbol{\beta})^2 + \lambda \|\boldsymbol{\beta}\|_1,
-\]
+\]$$
+
 updates are efficiently computed using soft-thresholding.
 
 **Connections to Models:**  
@@ -45,9 +51,11 @@ Newton-type methods use second-order curvature information to accelerate converg
 
 **Mathematical and Applied Perspective:**  
 Each iteration updates parameters using:
-\[
+
+$$\[
 \theta^{(t+1)} = \theta^{(t)} - [\nabla^2 L(\theta^{(t)})]^{-1}\nabla L(\theta^{(t)}),
-\]
+\]$$
+
 offering near-quadratic convergence locally. Although computing Hessians at large scale can be expensive, approximations and certain data structures make it tractable for moderate-sized problems.
 
 **Connections to Models:**  
@@ -63,10 +71,11 @@ offering near-quadratic convergence locally. Although computing Hessians at larg
 EM algorithm iteratively refines parameter estimates for models with hidden variables. By alternating between an expectation step (inferred distribution of latent variables) and a maximization step (parameter update given the latent distribution), it ensures non-decreasing likelihood and converges to a local maximum.
 
 **Mathematical and Applied Perspective:**  
-For a model with observed data \(X\), hidden states \(Z\), and parameters \(\theta\):
-\[
+For a model with observed data $\(X\)$, hidden states $\(Z\)$, and parameters $\(\theta\)$:
+
+$$\[
 \theta^{(t+1)} = \arg\max_{\theta} \mathbb{E}_{Z|X,\theta^{(t)}}[\log p(X,Z|\theta)],
-\]
+\]$$
 thus EM iteratively transforms a complicated latent-variable likelihood maximization into a sequence of simpler problems.
 
 **Connections to Models:**  
@@ -83,11 +92,13 @@ thus EM iteratively transforms a complicated latent-variable likelihood maximiza
 Gradient boosting constructs an ensemble model by iteratively adding new weak learners (commonly decision trees) that target the current residuals or the gradient of the loss with respect to the model’s predictions. Each iteration refines the ensemble, lowering error step-by-step.
 
 **Mathematical and Applied Perspective:**  
-If the current model is \(F_m(x)\), gradient boosting updates it as:
-\[
+If the current model is $\(F_m(x)\)$, gradient boosting updates it as:
+
+$$\[
 F_{m+1}(x) = F_m(x) + \nu \cdot h_m(x),
-\]
-where \(h_m(x)\) is a tree fitted to the negative gradients of the loss at the current predictions \(F_m(x)\), and \(\nu\) is the learning rate.
+\]$$
+
+where $\(h_m(x)\)$ is a tree fitted to the negative gradients of the loss at the current predictions $\(F_m(x)\)$, and $\(\nu\)$ is the learning rate.
 
 **Connections to Models:**  
 - **Tree-Based Ensembles (e.g., XGBoost, LightGBM):** These models are key players in many applied ML scenarios (e.g., structured data tasks in industry). They rely on iterative refinement to progressively reduce error.  
